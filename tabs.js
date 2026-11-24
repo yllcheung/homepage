@@ -1,9 +1,9 @@
-function setupTabs(list) {
+function setupTabs(list, orientation) {
   const tabs = Array.from(list.querySelectorAll('button[data-panel]'));
   const panels = tabs.map(tab => document.getElementById(tab.dataset.panel));
 
   list.setAttribute('role', 'tablist');
-  list.setAttribute('aria-orientation', 'vertical');
+  list.setAttribute('aria-orientation', orientation);
   tabs.forEach((tab, index) => {
     const panel = panels[index];
     tab.setAttribute('role', 'tab');
@@ -19,7 +19,13 @@ function setupTabs(list) {
       const active = index === Math.max(match, 0);
       tab.setAttribute('aria-selected', String(active));
       tab.tabIndex = active ? 0 : -1;
-      panels[index].hidden = !active;
+      const panel = panels[index];
+      if (!active && !panel.hidden) {
+        panel.querySelectorAll('audio').forEach(audio => {
+          if (!audio.paused) audio.pause();
+        });
+      }
+      panel.hidden = !active;
     });
   }
 
@@ -67,12 +73,14 @@ function setupTabs(list) {
   return show;
 }
 
-const showSidebar = setupTabs(document.querySelector('.section-nav'));
+const showSidebar = setupTabs(document.querySelector('.section-nav'), 'vertical');
+const showProjects = setupTabs(document.querySelector('.project-tabs'), 'horizontal');
 
 function showFromHash() {
   const id = window.location.hash.slice(1);
   const target = document.getElementById(id === 'about' ? 'home' : id);
   showSidebar(target);
+  showProjects(target);
 }
 
 const skip = document.querySelector('.skip');

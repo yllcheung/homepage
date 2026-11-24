@@ -194,7 +194,7 @@ section p { margin: .5rem 0; }
 @media print {
   .layout, .sidebar { display: block; min-height: 0; max-height: none; }
   .sidebar { position: static; border: 0; background: white; }
-  .portrait, .section-nav, .skip { display: none !important; }
+  .portrait, .section-nav, .project-tabs, .skip { display: none !important; }
   main, .sidebar { padding: 0; }
   main [role="tabpanel"][hidden] { display: block !important; margin-top: 2rem; }
   h2, h3, h4 { break-after: avoid; }
@@ -205,14 +205,6 @@ section p { margin: .5rem 0; }
   color: var(--accent);
   border-bottom: 2px solid var(--mint);
   padding-bottom: .4rem;
-}
-.research-quote {
-  margin: 1rem 0;
-  padding: .75rem 1rem;
-  border-left: 4px solid var(--emerald);
-  border-radius: 0 .4rem .4rem 0;
-  background: var(--sidebar);
-  font-style: italic;
 }
 .research-examples {
   display: grid;
@@ -226,6 +218,45 @@ section p { margin: .5rem 0; }
   padding: .8rem;
 }
 .research-examples h4 { margin: 0; color: var(--accent); }
-.bib-entry { margin: .55rem 0; overflow-wrap: anywhere; }
-#research-interests { margin-top: 1.75rem; }
-#research-interests h2 { font-size: 1.25rem; }
+
+.project-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: 0 0 1.25rem;
+}
+.project-tabs button {
+  padding: .45rem .8rem;
+  border: 1px solid var(--rule);
+  border-radius: .4rem;
+  background: var(--sidebar);
+  color: var(--ink);
+  font: inherit;
+  font-size: .9375rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+.project-tabs button:hover, .project-tabs button[aria-selected="true"] {
+  background: var(--mint);
+  border-color: transparent;
+  color: var(--accent);
+}
+.project-archive { margin-top: 1.5rem; overflow-wrap: anywhere; }
+.project-archive h4, .project-archive h5 { color: var(--heading); margin: 1.25rem 0 .65rem; }
+.project-archive h4 { font-size: 1.15rem; }
+.project-archive h5 { font-size: 1rem; }
+.linguistic-highlight { color: #b91c1c; }
+.clip-table {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: .45rem;
+  margin: .8rem 0 1.2rem;
+}
+.clip-table:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.clip-table table { width: 100%; min-width: 30rem; border-collapse: collapse; text-align: left; }
+.clip-table thead { background: var(--sidebar); }
+.clip-table th, .clip-table td { padding: .55rem .65rem; border-bottom: 1px solid var(--rule); }
+.clip-table tbody tr:last-child > * { border-bottom: 0; }
+.clip-table tbody th { font-weight: 500; font-variant-numeric: tabular-nums; }
+.clip-table audio { display: block; width: 12.5rem; }
