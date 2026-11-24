@@ -153,6 +153,8 @@ section h4 { font-size: 1rem; margin: 1.3rem 0 .35rem; }
 section p { margin: .5rem 0; }
 #home { max-width: 60rem; }
 #home > div > p { margin: 0 0 1rem; font-size: 1.125rem; }
+.home-intro { display: flow-root; }
+.home-icon { float: left; margin: .15rem .7rem .2rem 0; }
 #home h3 { border-bottom: 2px solid var(--mint); padding-bottom: .45rem; }
 #home ul { margin: .7rem 0 0; padding-left: 1.45rem; }
 #home li + li { margin-top: .25rem; }
